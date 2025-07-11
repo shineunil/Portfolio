@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - 나만의 포트폴리오</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .career-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .career-table th, .career-table td {
+      border: 1px solid #e5e7eb;
+      padding: 0.7rem 0.5rem;
+      text-align: center;
+      font-size: 1rem;
+    }
+    .career-table th {
+      background: #f3f4f6;
+      color: #4f46e5;
+      font-weight: 600;
+    }
+    .career-table tr:nth-child(even) {
+      background: #f8f9fa;
+    }
+    @media (max-width: 700px) {
+      .career-table th, .career-table td {
+        font-size: 0.92rem;
+        padding: 0.5rem 0.2rem;
+      }
+    }
+    /* 경력 카드 스크롤 */
+    .about-card.career-scroll {
+      max-height: 500px;
+      overflow-y: auto;
+    }
+    @media (max-width: 700px) {
+      .about-card.career-scroll {
+        max-height: 350px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 네비게이션 -->
+  <header class="navbar">
+    <div class="container">
+      <div class="logo">포트폴리오</div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">홈</a></li>
+          <li><a href="about.html">소개</a></li>
+          <li><a href="skills.html">기술</a></li>
+          <li><a href="projects.html">참여 프로젝트</a></li>
+          <li><a href="contact.html">연락처</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- About 페이지 메인 -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>About Me</h1>
+      <p>저에 대해 더 자세히 알아보세요</p>
+    </div>
+  </section>
+
+  <section class="about-content">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-card">
+          <h3>👋 자기소개</h3>
+          <p>안녕하세요! 저는 웹 개발에 열정을 가진 개발자입니다. 사용자 경험을 최우선으로 생각하며, 깔끔하고 효율적인 코드를 작성하는 것을 좋아합니다.</p>
+          <p>새로운 기술을 배우는 것을 즐기며, 항상 최신 트렌드를 파악하고 프로젝트에 적용하려고 노력합니다.</p>
+        </div>
+
+        <div class="about-card">
+          <h3>🎯 목표</h3>
+          <ul>
+            <li>사용자 중심의 웹 애플리케이션 개발</li>
+            <li>성능 최적화와 접근성 향상</li>
+            <li>팀워크를 통한 협업 경험 축적</li>
+            <li>지속적인 학습과 성장</li>
+          </ul>
+        </div>
+
+        <div class="about-card career-scroll">
+          <h3>💼 경력</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <h4>포이시스 <span class="timeline-period">2020.12~2024.08</span></h4>
+              <p><b>직위:</b> 프리랜서</p>
+              <p><b>담당업무:</b> 기금도시재생포탈, 기금포탈 업무(SM)</p>
+            </div>
+            <div class="timeline-item">
+              <h4>씨엔비시스템 <span class="timeline-period">2020.08~2020.12</span></h4>
+              <p><b>직위:</b> 프리랜서</p>
+              <p><b>담당업무:</b> 디지털원패스 시스템(SM)</p>
+            </div>
+            <div class="timeline-item">
+              <h4>포스웨이브 <span class="timeline-period">2018.04~2020.04</span></h4>
+              <p><b>직위:</b> 프리랜서</p>
+              <p><b>담당업무:</b> 지가정보시스템(SM)</p>
+            </div>
+            <div class="timeline-item">
+              <h4>지어소프트 <span class="timeline-period">2017.08~2017.11</span></h4>
+              <p><b>직위:</b> 프리랜서</p>
+              <p><b>담당업무:</b> BNK 썸뱅크 공동(SI)</p>
+            </div>
+            <div class="timeline-item">
+              <h4>시티스 <span class="timeline-period">2017.04~2017.07</span></h4>
+              <p><b>직위:</b> 프리랜서</p>
+              <p><b>담당업무:</b> 빅데이터 도로교통망(SI)</p>
+            </div>
+            <div class="timeline-item">
+              <h4>지어소프트 <span class="timeline-period">2016.07~2017.04</span></h4>
+              <p><b>직위:</b> 프리랜서</p>
+              <p><b>담당업무:</b> 한국통합교육개발원 통합사이트(SM)</p>
+            </div>
+            <div class="timeline-item">
+              <h4>디앤아이시스템 <span class="timeline-period">2013.09~2019.07</span></h4>
+              <p><b>직위:</b> 대리</p>
+              <p><b>담당업무:</b> LH부동산평가 시스템(SM)</p>
+            </div>
+            <div class="timeline-item">
+              <h4>정우인터랙티브 <span class="timeline-period">2011.11~2013.09</span></h4>
+              <p><b>직위:</b> 사원</p>
+              <p><b>담당업무:</b> LH GIS-BANK 시스템(SM)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-card">
+          <h3>🎓 교육</h3>
+          <div class="education">
+            <h4>부산대학교</h4>
+            <p>1999~2007</p>
+            <p>웹 프로그래밍, 데이터구조, 알고리즘 등 전공 수강</p>
+          </div>
+        </div>
+
+        <div class="about-card">
+          <h3>🌟 특징</h3>
+          <div class="features">
+            <div class="feature-item">
+              <h4>창의적 사고</h4>
+              <p>새로운 아이디어와 혁신적인 솔루션을 통해 문제를 해결합니다.</p>
+            </div>
+            <div class="feature-item">
+              <h4>팀워크</h4>
+              <p>협업을 중시하며, 다른 개발자들과의 소통을 통해 더 나은 결과를 만들어갑니다.</p>
+            </div>
+            <div class="feature-item">
+              <h4>지속적 학습</h4>
+              <p>새로운 기술을 배우는 것을 즐기며, 항상 성장하는 개발자가 되기 위해 노력합니다.</p>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 나만의 포트폴리오. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html> 

@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects - 나만의 포트폴리오</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero.projects-hero {
+      background: #f3f4f6;
+      color: #222;
+    }
+    
+    /* 프로젝트 타임라인 스타일 */
+    .timeline {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+    
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: #4f46e5;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+      border-radius: 3px;
+    }
+    
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    
+    .timeline-item:nth-child(odd) {
+      left: 0;
+    }
+    
+    .timeline-item:nth-child(even) {
+      left: 50%;
+    }
+    
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      right: -17px;
+      background-color: white;
+      border: 4px solid #4f46e5;
+      top: 15px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    
+    .timeline-item:nth-child(even)::after {
+      left: -16px;
+    }
+    
+    .timeline-content {
+      padding: 20px 30px;
+      background-color: white;
+      position: relative;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      border-left: 4px solid #4f46e5;
+    }
+    
+    .timeline-content h3 {
+      color: #4f46e5;
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+    
+    .project-period {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    .project-company {
+      color: #333;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+    
+    .project-role {
+      background: #f0f4ff;
+      color: #4f46e5;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin-bottom: 0.8rem;
+    }
+    
+    .project-tech {
+      margin-bottom: 0.8rem;
+    }
+    
+    .tech-tag {
+      background: #e5e7eb;
+      color: #374151;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      margin-right: 0.5rem;
+      margin-bottom: 0.3rem;
+      display: inline-block;
+    }
+    
+    .tech-tag.highlight {
+      background: #4f46e5;
+      color: white;
+    }
+    
+    .project-description {
+      color: #555;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    
+    .project-description ul {
+      margin: 0.5rem 0;
+      padding-left: 1.2rem;
+    }
+    
+    .project-description li {
+      margin-bottom: 0.3rem;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* 반응형 */
+    @media screen and (max-width: 768px) {
+      .timeline::after {
+        left: 31px;
+      }
+      
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      
+      .timeline-item:nth-child(even) {
+        left: 0;
+      }
+      
+      .timeline-item::after,
+      .timeline-item:nth-child(even)::after {
+        left: 15px;
+        right: auto;
+      }
+    }
+    
+    /* 프로젝트 통계 */
+    .project-stats {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    .stat-item {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .stat-number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #4f46e5;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      color: #666;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- 네비게이션 -->
+  <header class="navbar">
+    <div class="container">
+      <div class="logo">포트폴리오</div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">홈</a></li>
+          <li><a href="about.html">소개</a></li>
+          <li><a href="skills.html">기술</a></li>
+          <li><a href="projects.html">참여 프로젝트</a></li>
+          <li><a href="contact.html">연락처</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Projects 페이지 메인 -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Projects</h1>
+      <p>제가 작업한 프로젝트들입니다</p>
+    </div>
+  </section>
+
+  <section class="projects-content">
+    <div class="container">
+
+
+      <!-- 프로젝트 타임라인 -->
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>주택도시기금 정보시스템 통합 유지보수</h3>
+            <div class="project-period">2023.06 ~ 2024.08 (14개월)</div>
+            <div class="project-company">주택도시보증공사</div>
+            <div class="project-role">백엔드, 프론트엔드 개발/운영</div>
+            <div class="project-tech">
+              <span class="tech-tag highlight">JAVA</span>
+              <span class="tech-tag highlight">Spring Framework</span>
+              <span class="tech-tag">JSP</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">jQuery</span>
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">DB2/Tibero</span>
+              <span class="tech-tag">Eclipse</span>
+            </div>
+            <div class="project-description">
+              <ul>
+                <li>기금포탈, 도시재생포탈 유지보수</li>
+                <li>구입자금 마법사 DB 설계 및 개발 (하드코딩→DB관리)</li>
+                <li>RD웹 보증 관련 증명서 개발</li>
+                <li>WA 웹접근성 인증</li>
+                <li>주택도시재생기금포탈, 주택기금포탈 개발 및 유지보수</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>주택도시기금 정보시스템 통합 유지보수</h3>
+            <div class="project-period">2020.12 ~ 2023.06 (30개월)</div>
+            <div class="project-company">주택도시보증공사</div>
+            <div class="project-role">백엔드, 프론트엔드 개발/운영</div>
+            <div class="project-tech">
+              <span class="tech-tag highlight">JAVA</span>
+              <span class="tech-tag highlight">Spring Framework</span>
+              <span class="tech-tag">JSP</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">jQuery</span>
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">DB2/Tibero</span>
+              <span class="tech-tag">Eclipse</span>
+            </div>
+            <div class="project-description">
+              <ul>
+                <li>기금포탈, 도시재생포탈 유지보수</li>
+                <li>구입자금 마법사 DB 설계 및 개발 (하드코딩→DB관리)</li>
+                <li>RD웹 보증 관련 증명서 개발</li>
+                <li>WA 웹접근성 인증</li>
+                <li>주택도시재생기금포탈, 주택기금포탈 개발 및 유지보수</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>행정전자시스템 유지 관리</h3>
+            <div class="project-period">2020.08 ~ 2020.12 (4개월)</div>
+            <div class="project-company">지역정보개발원</div>
+            <div class="project-role">백엔드, 프론트엔드 개발/운영</div>
+            <div class="project-tech">
+              <span class="tech-tag highlight">JAVA</span>
+              <span class="tech-tag">JSP</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">jQuery</span>
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">Tibero</span>
+              <span class="tech-tag">Eclipse</span>
+              <span class="tech-tag">전자정부Framework</span>
+            </div>
+            <div class="project-description">
+              <ul>
+                <li>디지털원패스 유지보수</li>
+                <li>디지털원패스 시스템 유지 관리</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>2018 공간정보시스템 통합 및 유지관리</h3>
+            <div class="project-period">2019.04 ~ 2020.04 (12개월)</div>
+            <div class="project-company">한국토지주택공사</div>
+            <div class="project-role">백엔드, 프론트엔드 개발/운영</div>
+            <div class="project-tech">
+              <span class="tech-tag highlight">JAVA</span>
+              <span class="tech-tag">JSP</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">jQuery</span>
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">pg-sql</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">Eclipse</span>
+              <span class="tech-tag highlight">Spring Framework</span>
+              <span class="tech-tag">QGIS</span>
+            </div>
+            <div class="project-description">
+              <ul>
+                <li>기업입지 및 지가정보시스템 유지보수</li>
+                <li>개발단지 내 토지 보상비 산출 프로그램 산정 시스템 유지보수</li>
+                <li>공간데이터 현행화</li>
+                <li>시스템 성능 개선</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>2018 공간정보시스템 통합 및 유지관리</h3>
+            <div class="project-period">2018.04 ~ 2019.03 (11개월)</div>
+            <div class="project-company">한국토지주택공사</div>
+            <div class="project-role">백엔드, 프론트엔드 개발/운영</div>
+            <div class="project-tech">
+              <span class="tech-tag highlight">JAVA</span>
+              <span class="tech-tag">JSP</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">jQuery</span>
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">pg-sql</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">Eclipse</span>
+              <span class="tech-tag highlight">Spring Framework</span>
+              <span class="tech-tag">QGIS</span>
+            </div>
+            <div class="project-description">
+              <ul>
+                <li>기업입지 및 지가정보시스템 유지보수</li>
+                <li>개발단지 내 토지 보상비 산출 프로그램 산정 시스템 유지보수</li>
+                <li>공간데이터 현행화</li>
+                <li>시스템 성능 개선</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>부산은행 썸뱅크 연동 (LGU+)</h3>
+            <div class="project-period">2017.08 ~ 2017.11 (4개월)</div>
+            <div class="project-company">부산은행</div>
+            <div class="project-role">백엔드, 프론트엔드 개발/운영</div>
+            <div class="project-tech">
+              <span class="tech-tag highlight">JAVA</span>
+              <span class="tech-tag">JSP</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">jQuery</span>
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">Oracle</span>
+              <span class="tech-tag">Eclipse</span>
+              <span class="tech-tag">Devon Framework</span>
+            </div>
+            <div class="project-description">
+              <ul>
+                <li>DB 설계, 관리자 프로그램 개발</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>한국교육개발원 통합유지보수</h3>
+            <div class="project-period">2016.08 ~ 2017.04 (9개월)</div>
+            <div class="project-company">한국교육개발원</div>
+            <div class="project-role">백엔드, 프론트엔드 개발/운영</div>
+            <div class="project-tech">
+              <span class="tech-tag highlight">JAVA</span>
+              <span class="tech-tag">JSP</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">jQuery</span>
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">Oracle</span>
+              <span class="tech-tag">Eclipse</span>
+              <span class="tech-tag">전자정부Framework</span>
+            </div>
+            <div class="project-description">
+              <ul>
+                <li>한국교육개발원 통합사이트 유지보수</li>
+                <li>충북혁신도시 이전 사업지원</li>
+                <li>조직도 연계 프로시저 개발</li>
+                <li>웹 접근성 인증</li>
+                <li>뉴스레터 게시판 개발</li>
+                <li>교육정책네트워크 사이트 리뉴얼</li>
+                <li>전자도서관 사이트 로그인시 직원/일반인 구분 뷰테이블 생성</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>정보시스템 유지보수 용역</h3>
+            <div class="project-period">2014.05 ~ 2016.07 (26개월)</div>
+            <div class="project-company">한국토지주택공사</div>
+            <div class="project-role">백엔드, 프론트엔드 개발/운영 (PL)</div>
+            <div class="project-tech">
+              <span class="tech-tag">C#</span>
+              <span class="tech-tag">ASP</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">PL-SQL</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">Oracle</span>
+              <span class="tech-tag">Visual Studio</span>
+              <span class="tech-tag">.NET Framework</span>
+            </div>
+            <div class="project-description">
+              <ul>
+                <li>LH부동산맵 시스템 유지보수 및 개발 (PL)</li>
+                <li>LH 부동산맵 시스템 진주 이전 사업지원</li>
+                <li>웹 취약성 점검 및 웹접근성 인증</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>정보시스템 유지보수 용역 (2013)</h3>
+            <div class="project-period">2013.09 ~ 2014.05 (9개월)</div>
+            <div class="project-company">한국토지주택공사</div>
+            <div class="project-role">백엔드, 프론트엔드 개발/운영</div>
+            <div class="project-tech">
+              <span class="tech-tag">C#</span>
+              <span class="tech-tag">ASP</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">PL-SQL</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">Oracle</span>
+              <span class="tech-tag">Visual Studio</span>
+              <span class="tech-tag">.NET Framework</span>
+            </div>
+            <div class="project-description">
+              <ul>
+                <li>LH부동산맵 시스템 유지보수 및 개발 (PL)</li>
+                <li>사원정보 연계 프로시저 개발</li>
+                <li>상가 및 주택현황 정보 연계 프로시저 개발</li>
+                <li>SSL 인증서 갱신</li>
+                <li>Logparser 쿼리를 이용한 사용자 현황 분석</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>정보시스템 유지보수 용역 (2013)</h3>
+            <div class="project-period">2012.08 ~ 2013.05 (10개월)</div>
+            <div class="project-company">한국토지주택공사</div>
+            <div class="project-role">백엔드, 프론트엔드 개발/운영</div>
+            <div class="project-tech">
+              <span class="tech-tag">ASP</span>
+              <span class="tech-tag">PL-SQL</span>
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">pgAdmin</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">Oracle</span>
+              <span class="tech-tag">Visual Studio</span>
+              <span class="tech-tag">.NET Framework</span>
+            </div>
+            <div class="project-description">
+              <ul>
+                <li>사원 GIS-BANK 시스템 유지보수</li>
+                <li>상가 및 주택현황 정보 연계 프로시저 개발</li>
+                <li>SSL 인증서 갱신</li>
+                <li>Logparser 쿼리를 이용한 사용자 현황 분석</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>도로교통공단 인사시스템 구축</h3>
+            <div class="project-period">2012.05 ~ 2012.07 (3개월)</div>
+            <div class="project-company">도로교통공단</div>
+            <div class="project-role">백엔드, 프론트엔드 개발/운영</div>
+            <div class="project-tech">
+              <span class="tech-tag highlight">JAVA</span>
+              <span class="tech-tag">JSP</span>
+              <span class="tech-tag">PL-SQL</span>
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">Oracle</span>
+              <span class="tech-tag">Eclipse</span>
+              <span class="tech-tag highlight">Spring Framework</span>
+            </div>
+            <div class="project-description">
+              <ul>
+                <li>사원 발령업무 담당</li>
+                <li>인사발령 프로그램 개발</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>하나마이크론 인사시스템 구축</h3>
+            <div class="project-period">2011.11 ~ 2012.02 (3개월)</div>
+            <div class="project-company">하나마이크론</div>
+            <div class="project-role">백엔드, 프론트엔드 개발/운영</div>
+            <div class="project-tech">
+              <span class="tech-tag highlight">JAVA</span>
+              <span class="tech-tag">JSP</span>
+              <span class="tech-tag">PL-SQL</span>
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">ibSheet</span>
+              <span class="tech-tag">Oracle</span>
+              <span class="tech-tag">Eclipse</span>
+              <span class="tech-tag highlight">Spring Framework</span>
+            </div>
+            <div class="project-description">
+              <ul>
+                <li>사원 인사관리 프로그램 개발 담당</li>
+                <li>인사발령 프로그램 개발</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 나만의 포트폴리오. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // 타임라인 애니메이션
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationDelay = '0.1s';
+          entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.timeline-item').forEach(item => {
+      observer.observe(item);
+    });
+  </script>
+</body>
+</html> 

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - 나만의 포트폴리오</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 네비게이션 -->
+  <header class="navbar">
+    <div class="container">
+      <div class="logo">포트폴리오</div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">홈</a></li>
+          <li><a href="about.html">소개</a></li>
+          <li><a href="skills.html">기술</a></li>
+          <li><a href="projects.html">참여 프로젝트</a></li>
+          <li><a href="contact.html">연락처</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contact 페이지 메인 -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Contact</h1>
+              <p>사이트 제작의뢰를 하고 싶으시다면 언제든지 연락 주세요</p>
+    </div>
+  </section>
+
+  <section class="contact-content">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- 연락처 정보 -->
+        <div class="contact-info-section">
+          <h2>연락처 정보</h2>
+          <div class="contact-items">
+            <div class="contact-item">
+              <div class="contact-icon">📧</div>
+              <div class="contact-details">
+                <h3>이메일</h3>
+                <p>kising0529@naver.com</p>
+                <a href="mailto:kising0529@naver.com">메일 보내기</a>
+              </div>
+            </div>
+
+
+
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div class="contact-details">
+                <h3>위치</h3>
+                <p>부산, 대한민국</p>
+                <p>원격 작업 가능</p>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+        <!-- 문의 폼 -->
+        <div class="contact-form-section">
+          <h2>메일 보내기</h2>
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">이름 *</label>
+              <input type="text" id="name" name="from_name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">이메일 *</label>
+              <input type="email" id="email" name="reply_to" required>
+            </div>
+            <div class="form-group">
+              <label for="subject">제목 *</label>
+              <input type="text" id="subject" name="subject" required>
+            </div>
+            <div class="form-group">
+              <label for="message">메시지 *</label>
+              <textarea id="message" name="message" rows="6" required></textarea>
+            </div>
+            <button type="submit" class="btn submit-btn">
+              <span class="btn-text">메일 보내기</span>
+              <span class="btn-loading" style="display: none;">전송 중...</span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- FAQ 섹션 -->
+      <div class="faq-section">
+        <h2>자주 묻는 질문</h2>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h3>어떤 프로젝트를 도와주실 수 있나요?</h3>
+            <p>웹 개발, 모바일 앱 개발, API 개발 등 다양한 프로젝트를 도와드릴 수 있습니다. 구체적인 요구사항을 알려주시면 최적의 솔루션을 제안해드리겠습니다.</p>
+          </div>
+
+          <div class="faq-item">
+            <h3>작업 기간은 얼마나 걸리나요?</h3>
+            <p>프로젝트의 규모와 복잡도에 따라 다르지만, 일반적으로 소규모 프로젝트는 1-2주, 중간 규모는 1-2개월 정도 소요됩니다.</p>
+          </div>
+
+          <div class="faq-item">
+            <h3>원격 작업이 가능한가요?</h3>
+            <p>네, 원격 작업이 가능합니다. 화상 회의, 실시간 협업 도구를 활용하여 효율적으로 작업할 수 있습니다.</p>
+          </div>
+
+          <div class="faq-item">
+            <h3>유지보수 서비스도 제공하나요?</h3>
+            <p>네, 개발 완료 후에도 지속적인 유지보수와 업데이트 서비스를 제공합니다. 안정적인 서비스 운영을 위해 최선을 다하겠습니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 나만의 포트폴리오. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    // EmailJS 초기화 (실제 사용자 키)
+    emailjs.init("VNOSn4X_ZOxZG4EmG");
+
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = contactForm.querySelector('.submit-btn');
+    const btnText = submitBtn.querySelector('.btn-text');
+    const btnLoading = submitBtn.querySelector('.btn-loading');
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      btnText.style.display = 'none';
+      btnLoading.style.display = 'inline';
+      submitBtn.disabled = true;
+
+      emailjs.sendForm('service_3ccytjj', 'template_ql32jcp', contactForm)
+        .then(function() {
+          alert('메일이 성공적으로 전송되었습니다!');
+          contactForm.reset();
+        }, function(error) {
+          alert('메일 전송에 실패했습니다. 다시 시도해주세요.');
+          console.error(error);
+        })
+        .finally(function() {
+          btnText.style.display = 'inline';
+          btnLoading.style.display = 'none';
+          submitBtn.disabled = false;
+        });
+    });
+  </script>
+</body>
+</html> 
